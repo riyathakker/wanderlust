@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const path = require("path");
 const Listing = require("./models/listing");
+const methodoverride = require("method-override");
 main().then((res)=>{
     console.log("Connected to db");
 })
@@ -16,6 +17,7 @@ async function main(){
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended: true}));
+app.use(methodoverride("_method"));
 //default root
 app.get("/",(req,res)=>{
     res.send("Hi, i am root route");
@@ -54,6 +56,19 @@ app.post("/listing", async (req,res)=>{
 	await newlisting.save();
 	console.log("New listing saved");//printed as js obj with key value pairs
 	res.redirect("/listings");
+})
+//edit route
+app.get("/listing/:id/edit", async (req,res)=>{
+	let {id} = req.params;
+	const listing = await Listing.findById(id);
+	res.render("listings/edit.ejs",{listing});
+})
+//update route
+app.put("/listing/:id", async (req,res)=>{
+	let {id} = req.params;
+	await Listing.findByIdAndUpdate(id,{...req.body.listing});
+	console.log("Updated listing saved");//printed as js obj with key value pairs
+	res.redirect(`/listing/${id}`);
 })
 app.listen(8080,()=>{
     console.log("Listening on port 8080");

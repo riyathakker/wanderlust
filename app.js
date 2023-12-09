@@ -52,7 +52,7 @@ app.get("/listing/:id", async (req,res)=>{
 //add route
 app.post("/listing", async (req,res)=>{
 	
-	const newlisting = new Listing(req.body);
+	const newlisting = new Listing(req.body.listing);
 	await newlisting.save();
 	console.log("New listing saved");//printed as js obj with key value pairs
 	res.redirect("/listings");
@@ -69,6 +69,12 @@ app.put("/listing/:id", async (req,res)=>{
 	await Listing.findByIdAndUpdate(id,{...req.body.listing});
 	console.log("Updated listing saved");//printed as js obj with key value pairs
 	res.redirect(`/listing/${id}`);
+})
+app.delete("/listing/:id", async(req,res)=>{
+	let {id} = req.params;
+	await Listing.findByIdAndDelete(id);
+	console.log("Deleted succesfully");
+	res.redirect("/listings");
 })
 app.listen(8080,()=>{
     console.log("Listening on port 8080");

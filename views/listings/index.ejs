@@ -8,10 +8,12 @@
 </head>
 <body>
     <h3>All listings</h3>
+    <form method="GET" action="/listing/new">
+        <button>Create New listing</button>
+    </form>
     <ul>
-        <% for(let x of listing){%>
-            <li><%= x.title %>
-            <%= x.price %></li>
+        <% for(let x of alllisting){%>
+            <li><a href="/listing/<%= x._id %>"><%= x.title %> </a> </li>
         <% } %>
     </ul>
 </body>

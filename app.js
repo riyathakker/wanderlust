@@ -23,6 +23,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended: true}));
 app.use(methodoverride("_method"));
 app.engine('ejs', ejsmate);
+app.use(express.static(path.join(__dirname, "/public")));
 //default root
 app.get("/",(req,res)=>{
     res.send("Hi, i am root route");

@@ -39,12 +39,7 @@
     width: 100%;
     margin-right: 0.5rem;
 }
-.footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 
-}
 /* cards */
 .card{
     border:none !important;
@@ -58,4 +53,44 @@
 
 .card-body{
     padding: 0 !important;
+}
+.card-text p{
+    font-weight: 900 !important;
+}
+.listing-link{
+    text-decoration: none !important ;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+/* stick footer */
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex:1;
+}
+/* button color */
+.add-btn{
+    background-color: #a5121c !important;
+    border:#a5121c !important ;
+}
+.f-info{
+    width:100% !important;
+}
+.edit-btn{
+    background-color: #a5121c !important;
+    border:#a5121c !important ;  
+}
+
+.card img{
+    border-radius: 2rem;
+    height: 15rem;
+    width: 20rem;
 }

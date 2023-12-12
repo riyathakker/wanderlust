@@ -54,6 +54,7 @@ app.get("/listing/new",  (req,res)=>{
 app.get("/listing/:id", async (req,res)=>{
 	let {id} = req.params;
 	const listing = await Listing.findById(id);
+	console.log(listing);
 	res.render("listings/show.ejs",{listing});
 })
 //add route

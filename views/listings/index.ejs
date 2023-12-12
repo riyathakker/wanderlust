@@ -3,14 +3,18 @@
     <h3>All listings</h3>
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
     <% for(let x of alllisting){%>
+      <a href="/listing/<%= x._id %>" class="listing-link">
     <div class="card col" style="width: 20rem;">
-        <img src="<%= x.image %>" class="card-img-top" alt="listing-image">
-
+        <img src="<%= x.image %>" class="card-img-top" alt="listing-image" height="200rem">
+        <div class="card-img-overlay"></div>
         <div class="card-body">
           <p class="card-text"><b><%= x.title %></b><br>Price= &#8377; <%= x.price.toLocaleString("en-In") %> / night <br></p>
         </div>
       </div>
+    </a>
+   
     <% } %>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
 
 </body>
